@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.framework.SuspensionManager;
 
+
 public class MyFragment extends Fragment {
 
     @Override

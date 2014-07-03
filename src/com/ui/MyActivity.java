@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.os.Bundle;
 import com.framework.SuspensionManager;
 
+
 public class MyActivity extends Activity {
 
     @Override

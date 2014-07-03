@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 import com.framework.ActivityController;
 
+
 public class MyActivityController extends ActivityController<MyActivity> implements MyFragmentController.MyFragmentCallback {
 
     private TextView textView;

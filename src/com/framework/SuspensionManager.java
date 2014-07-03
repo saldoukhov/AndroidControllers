@@ -22,8 +22,7 @@ public class SuspensionManager {
                 controller = controllerClass.newInstance();
                 long controllerId = getControllerId();
                 activityControllers.put(controllerId, controller);
-            }
-            else {
+            } else {
                 controller = activityControllers.get(savedInstanceState.getLong(CONTROLLER_ID));
             }
             controller.setActivity(activity);

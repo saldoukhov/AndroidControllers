@@ -2,6 +2,7 @@ package com.framework;
 
 import android.app.Activity;
 
+
 public class ActivityController<T extends Activity> {
     private T activity;
 

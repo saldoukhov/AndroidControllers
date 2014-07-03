@@ -4,6 +4,7 @@ import android.view.View;
 import com.framework.FragmentController;
 import com.framework.SuspensionManager;
 
+
 public class MyFragmentController extends FragmentController<MyFragment> {
 
     private MyFragmentCallback callback;
