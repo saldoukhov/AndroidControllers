@@ -1,25 +1,10 @@
-#iOS
-#ignore private workspace stuff added by Xcode4
-xcuserdata
-project.xcworkspace
-
-#xcode specific
-build/
-build/*
-*.pbxuser
-*.mode2v3
-*.mode1v3
-*.perspective
-*.perspectivev3
-*~.nib
-
 #Android
 # built application files
 *.apk
 *.ap_
 # according to http://devnet.jetbrains.com/docs/DOC-1186
-*/.idea/workspace.xml
-*/.idea/tasks.xml
+.idea/workspace.xml
+.idea/tasks.xml
 .settings/
 # files for the dex VM
 *.dex
