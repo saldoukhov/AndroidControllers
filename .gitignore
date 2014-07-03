@@ -1,0 +1,50 @@
+#iOS
+#ignore private workspace stuff added by Xcode4
+xcuserdata
+project.xcworkspace
+
+#xcode specific
+build/
+build/*
+*.pbxuser
+*.mode2v3
+*.mode1v3
+*.perspective
+*.perspectivev3
+*~.nib
+
+#Android
+# built application files
+*.apk
+*.ap_
+# according to http://devnet.jetbrains.com/docs/DOC-1186
+*/.idea/workspace.xml
+*/.idea/tasks.xml
+.settings/
+# files for the dex VM
+*.dex
+
+.gradle/
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+out/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Eclipse project files
+#.classpath
+#.project
+
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+*.svn
+*.xccheckout
