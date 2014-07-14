@@ -11,7 +11,9 @@ If we implement this the "standard" Android way, we would have to overwrite the 
 
 This can be achieved by using SuspensionManager. SuspensionManager is like a "shock absorber" between ever-changing Android UI stack and more stable world of controllers. It is an agent who takes care of re-connecting controllers to their activities when activities undergo kill/restore.
 
-Activities and fragments will be treated differently. Activities are "View-First", meaning that activity always gets created first, and then resolves either a new or previously stored instance of the controller from the SuspensionManager. Fragments, on the opposite, are "Controller-First": when you need a fragment, you instantiate a controller which creates an instance of the fragment and this instance will be used to start a transaction.
+**View-First vs. Controller-First**
+
+When you separate controller code from "view" (not the Android View, but view in a wider sense - activity or fragment) you need to be aware what gets created first - view or controller. Generally, Controller-First approach is better, since it allows you to specify dependencies upfront, but Android's way to start activities from intents sometimes makes View-First for activities a requirement. Using SuspensionManager, you can use have your activities both ways - View-First by starting via intent or Controller-First by instantiating ActivityController and calling .startActivity. Fragments for now are always using Controller-First approach.
 
 There are four main calls activities and fragments should execute to have a suspension, two for activity and two for fragment.
 

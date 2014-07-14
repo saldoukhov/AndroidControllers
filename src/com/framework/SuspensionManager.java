@@ -2,9 +2,11 @@ package com.framework;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -19,9 +21,15 @@ public class SuspensionManager {
         try {
             ActivityController controller;
             if (savedInstanceState == null) {
-                controller = controllerClass.newInstance();
-                long controllerId = getControllerId();
-                activityControllers.put(controllerId, controller);
+                long controllerId;
+                controllerId = activity.getIntent().getLongExtra(CONTROLLER_ID, 0);
+                if (controllerId != 0)
+                    controller = activityControllers.get(controllerId);
+                else {
+                    controller = controllerClass.newInstance();
+                    controllerId = getControllerId();
+                    activityControllers.put(controllerId, controller);
+                }
             } else {
                 controller = activityControllers.get(savedInstanceState.getLong(CONTROLLER_ID));
             }
@@ -31,7 +39,6 @@ public class SuspensionManager {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-
     }
 
     public static void activitySavingInstanceState(Activity activity, Bundle outState) {
@@ -41,6 +48,12 @@ public class SuspensionManager {
                 break;
             }
         }
+    }
+
+    public static void memorizeActivityController(ActivityController activityController, Intent intent) {
+        long controllerId = getControllerId();
+        activityControllers.put(controllerId, activityController);
+        intent.putExtra(CONTROLLER_ID, controllerId);
     }
 
     public static void fragmentViewCreated(Fragment fragment, View view) {

@@ -32,12 +32,21 @@ public class MyActivityController extends ActivityController<MyActivity> impleme
                 .commit();
     }
 
-    @Override
-    public void execute() {
+    private void updateText(String value) {
         if (text == null)
-            text = "Click";
+            text = value;
         else
-            text = text + "Click";
+            text = text + value;
         textView.setText(text);
+    }
+
+    @Override
+    public void executeClick() {
+        updateText("Click");
+    }
+
+    @Override
+    public void executeActivity(String value) {
+        updateText(value);
     }
 }

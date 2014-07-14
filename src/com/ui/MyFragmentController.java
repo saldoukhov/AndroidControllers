@@ -5,7 +5,7 @@ import com.framework.FragmentController;
 import com.framework.SuspensionManager;
 
 
-public class MyFragmentController extends FragmentController<MyFragment> {
+public class MyFragmentController extends FragmentController<MyFragment> implements ResultActivityController.ResultActivityControllerCallback {
 
     private MyFragmentCallback callback;
 
@@ -16,15 +16,30 @@ public class MyFragmentController extends FragmentController<MyFragment> {
 
     @Override
     public void fragmentViewCreated(View view) {
-        view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.button_click).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyFragmentController.this.callback.execute();
+                MyFragmentController.this.callback.executeClick();
+            }
+        });
+
+        view.findViewById(R.id.button_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ResultActivityController controller = new ResultActivityController(MyFragmentController.this);
+                controller.setInitValue("InitValue");
+                controller.startActivity(getFragment().getActivity());
             }
         });
     }
 
+    @Override
+    public void executeActivity(String value) {
+        callback.executeActivity(value);
+    }
+
     public interface MyFragmentCallback {
-        void execute();
+        void executeClick();
+        void executeActivity(String value);
     }
 }
