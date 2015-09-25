@@ -1,5 +1,6 @@
 package com.ui;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import com.framework.ActivityController;
@@ -11,8 +12,8 @@ public class MyActivityController extends ActivityController<MyActivity> impleme
     private String text;
 
     @Override
-    public void setActivity(MyActivity activity) {
-        super.setActivity(activity);
+    public void setActivity(MyActivity activity, Bundle savedInstanceState) {
+        super.setActivity(activity, savedInstanceState);
         textView = (TextView) activity.findViewById(R.id.text);
         if (text != null)
             textView.setText(text);

@@ -1,8 +1,9 @@
 package com.ui;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
+
 import com.framework.ActivityController;
 
 public class ResultActivityController extends ActivityController<ResultActivity> {
@@ -16,8 +17,8 @@ public class ResultActivityController extends ActivityController<ResultActivity>
     }
 
     @Override
-    public void setActivity(ResultActivity activity) {
-        super.setActivity(activity);
+    public void setActivity(ResultActivity activity, Bundle savedInstanceState) {
+        super.setActivity(activity, savedInstanceState);
         editText = (EditText) activity.findViewById(R.id.entry_field);
         editText.setText(initValue);
         activity.findViewById(R.id.done).setOnClickListener(new View.OnClickListener() {

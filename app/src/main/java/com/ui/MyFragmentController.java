@@ -1,5 +1,6 @@
 package com.ui;
 
+import android.os.Bundle;
 import android.view.View;
 import com.framework.FragmentController;
 import com.framework.SuspensionManager;
@@ -15,7 +16,7 @@ public class MyFragmentController extends FragmentController<MyFragment> impleme
     }
 
     @Override
-    public void fragmentViewCreated(View view) {
+    public void fragmentViewCreated(View view, final Bundle savedInstanceState) {
         view.findViewById(R.id.button_click).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,7 +29,7 @@ public class MyFragmentController extends FragmentController<MyFragment> impleme
             public void onClick(View v) {
                 ResultActivityController controller = new ResultActivityController(MyFragmentController.this);
                 controller.setInitValue("InitValue");
-                controller.startActivity(getFragment().getActivity());
+                controller.startActivity(getFragment().getActivity(), ResultActivity.class);
             }
         });
     }
